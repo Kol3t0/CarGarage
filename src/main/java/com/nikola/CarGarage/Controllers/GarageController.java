@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/garages")
 
 public class GarageController {
-    private GarageService garageService;
+    private final GarageService garageService;
 
     public GarageController(GarageService garageService) {
         this.garageService = garageService;

@@ -3,11 +3,16 @@ package com.nikola.CarGarage.DTO;
 import java.util.List;
 
 public class CreateCarDTO {
+
     private String make;
+
     private String model;
+
     private int productionYear;
+
     private String licensePlate;
-    private List<Integer> garageIds;
+
+    private List<Integer> garageIds;;
 
     public String getMake() {
         return make;

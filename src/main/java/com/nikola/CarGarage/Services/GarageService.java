@@ -23,7 +23,7 @@ public class GarageService {
         Garage garage = new Garage();
 
         garage.setName(createGarageDTO.getName());
-        garage.setAddress(createGarageDTO.getLocation());
+        garage.setLocation(createGarageDTO.getLocation());
         garage.setCity(createGarageDTO.getCity());
         garage.setCapacity(createGarageDTO.getCapacity());
 
@@ -44,16 +44,11 @@ public class GarageService {
 
         Garage garage = optionalGarage.get();
         garage.setName(updateGarageDTO.getName());
-        garage.setAddress(updateGarageDTO.getLocation());
+        garage.setLocation(updateGarageDTO.getLocation());
         garage.setCity(updateGarageDTO.getCity());
         garage.setCapacity(updateGarageDTO.getCapacity());
 
         return garageRepository.save(garage);
-    }
-
-
-    public Garage getGarageById(int id) {
-        return garageRepository.findById(id).orElse(null);
     }
 
     public void deleteGarage(int id) {
@@ -67,7 +62,7 @@ public class GarageService {
         return new ResponseGarageDTO(
                 garage.getId(),
                 garage.getName(),
-                garage.getAddress(),
+                garage.getLocation(),
                 garage.getCity(),
                 garage.getCapacity()
         );

@@ -7,9 +7,10 @@ import java.util.List;
 public class Garage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int id;
     private String name;
-    private String address;
+    private String location;
     private String city;
     private int capacity;
 
@@ -43,12 +44,12 @@ public class Garage {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getCity() {
@@ -75,10 +76,10 @@ public class Garage {
         this.maintenanceRecords = maintenanceRecords;
     }
 
-    public Garage(int id, String name, String address, String city, int capacity, List<Car> cars, List<Maintenance> maintenanceRecords) {
+    public Garage(int id, String name, String location, String city, int capacity, List<Car> cars, List<Maintenance> maintenanceRecords) {
         this.id = id;
         this.name = name;
-        this.address = address;
+        this.location = location;
         this.city = city;
         this.capacity = capacity;
         this.cars = cars;

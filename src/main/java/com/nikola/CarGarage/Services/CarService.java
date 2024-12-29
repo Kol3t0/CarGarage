@@ -26,6 +26,7 @@ public class CarService {
 
     public Car createCar(CreateCarDTO createCarDTO) {
         Car car = new Car();
+
         car.setMake(createCarDTO.getMake());
         car.setModel(createCarDTO.getModel());
         car.setLicensePlate(createCarDTO.getLicensePlate());
@@ -67,10 +68,6 @@ public class CarService {
         return carRepository.save(car);
     }
 
-    public Car getCarById(int id) {
-        return carRepository.findById(id).orElse(null);
-    }
-
     public void deleteCar(int id) {
         if (!carRepository.existsById(id)) {
             throw new RuntimeException("Car with ID " + id + " not found");
@@ -78,12 +75,17 @@ public class CarService {
         carRepository.deleteById(id);
     }
 
+    public List<Car> filterCars(String make, String garageName, int yearFrom, int yearTo) {
+        return carRepository.findByMakeAndGarageAndProductionYearRange(make, garageName, yearFrom, yearTo);
+    }
+
+
     public ResponseCarDTO convertToResponseCarDTO(Car car) {
         List<ResponseGarageDTO> garages = car.getGarage() != null ?
                 List.of(new ResponseGarageDTO(
                         car.getGarage().getId(),
                         car.getGarage().getName(),
-                        car.getGarage().getAddress(),
+                        car.getGarage().getLocation(),
                         car.getGarage().getCity(),
                         car.getGarage().getCapacity()
                 )) : List.of();

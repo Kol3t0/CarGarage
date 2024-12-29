@@ -5,6 +5,8 @@ import com.nikola.CarGarage.DTO.CreateCarDTO;
 import com.nikola.CarGarage.DTO.ResponseCarDTO;
 import com.nikola.CarGarage.DTO.UpdateCarDTO;
 import com.nikola.CarGarage.Services.CarService;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 @RequestMapping("/cars")
 
 public class CarController {
-    private CarService carService;
+    private final CarService carService;
 
     public CarController(CarService carService) {
         this.carService = carService;
@@ -25,12 +27,13 @@ public class CarController {
     }
 
     @PostMapping
-    public Car createCar(@RequestBody CreateCarDTO createCarDTO) {
-        return carService.createCar(createCarDTO);
+    public ResponseEntity<Car> createCar(@Valid @RequestBody CreateCarDTO createCarDTO) {
+        Car createdCar = carService.createCar(createCarDTO);
+        return ResponseEntity.ok(createdCar);
     }
 
     @PutMapping("/{id}")
-    public Car updateCar(@PathVariable int id, @RequestBody UpdateCarDTO updateCarDTO) {
+    public Car updateCar(@PathVariable int id, @Valid @RequestBody UpdateCarDTO updateCarDTO) {
         return carService.updateCar(id, updateCarDTO);
     }
 
@@ -38,4 +41,14 @@ public class CarController {
     public void deleteCar(@PathVariable int id) {
         carService.deleteCar(id);
     }
+
+    @GetMapping("/filter")
+    public List<Car> filterCars(
+            @RequestParam(required = false) String make,
+            @RequestParam(required = false) String garageName,
+            @RequestParam(required = false) Integer yearFrom,
+            @RequestParam(required = false) Integer yearTo) {
+        return carService.filterCars(make, garageName, yearFrom, yearTo);
+    }
+
 }
