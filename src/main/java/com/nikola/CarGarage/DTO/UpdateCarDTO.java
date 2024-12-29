@@ -1,34 +1,13 @@
-package com.nikola.CarGarage;
+package com.nikola.CarGarage.DTO;
 
 import java.util.List;
 
-public class ResponseCarDTO {
-    private int id;
+public class UpdateCarDTO {
     private String make;
     private String model;
     private int productionYear;
     private String licensePlate;
-    private List<ResponseGarageDTO> garages;
-
-    public ResponseCarDTO(int id, String make, String model, int productionYear, String licensePlate, List<ResponseGarageDTO> garages) {
-        this.id = id;
-        this.make = make;
-        this.model = model;
-        this.productionYear = productionYear;
-        this.licensePlate = licensePlate;
-        this.garages = garages;
-    }
-
-    public ResponseCarDTO() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private List<Integer> garageIds;
 
     public String getMake() {
         return make;
@@ -62,11 +41,11 @@ public class ResponseCarDTO {
         this.licensePlate = licensePlate;
     }
 
-    public List<ResponseGarageDTO> getGarages() {
-        return garages;
+    public List<Integer> getGarageIds() {
+        return garageIds;
     }
 
-    public void setGarages(List<ResponseGarageDTO> garages) {
-        this.garages = garages;
+    public void setGarageIds(List<Integer> garageIds) {
+        this.garageIds = garageIds;
     }
 }

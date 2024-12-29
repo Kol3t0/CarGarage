@@ -1,5 +1,7 @@
-package com.nikola.CarGarage;
+package com.nikola.CarGarage.Services;
 
+import com.nikola.CarGarage.Classes.Maintenance;
+import com.nikola.CarGarage.Repositories.MaintenanceRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

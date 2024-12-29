@@ -1,4 +1,4 @@
-package com.nikola.CarGarage;
+package com.nikola.CarGarage.Controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 

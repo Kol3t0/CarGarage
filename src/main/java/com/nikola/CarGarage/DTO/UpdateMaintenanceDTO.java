@@ -1,4 +1,4 @@
-package com.nikola.CarGarage;
+package com.nikola.CarGarage.DTO;
 
 public class UpdateMaintenanceDTO {
     private int carId;
