@@ -5,13 +5,14 @@ import java.time.LocalDate;
 
 @Entity
 public class Maintenance {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String serviceType;
+    private LocalDate scheduledDate;
     private String carName;
-    private LocalDate scheduledDate; // Changed from int to LocalDate
 
     @ManyToOne
     @JoinColumn(name = "car_id", nullable = false)

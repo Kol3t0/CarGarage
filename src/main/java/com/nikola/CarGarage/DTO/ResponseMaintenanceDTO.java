@@ -21,6 +21,9 @@ public class ResponseMaintenanceDTO {
         this.garageName = garageName;
     }
 
+    public ResponseMaintenanceDTO() {
+    }
+
     public int getId() {
         return id;
     }

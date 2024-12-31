@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/cars")
 
 public class CarController {
+
     private final CarService carService;
 
     public CarController(CarService carService) {
@@ -41,14 +42,4 @@ public class CarController {
     public void deleteCar(@PathVariable int id) {
         carService.deleteCar(id);
     }
-
-    @GetMapping("/filter")
-    public List<Car> filterCars(
-            @RequestParam(required = false) String make,
-            @RequestParam(required = false) String garageName,
-            @RequestParam(required = false) Integer yearFrom,
-            @RequestParam(required = false) Integer yearTo) {
-        return carService.filterCars(make, garageName, yearFrom, yearTo);
-    }
-
 }

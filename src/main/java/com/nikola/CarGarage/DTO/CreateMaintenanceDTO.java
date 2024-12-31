@@ -3,9 +3,13 @@ package com.nikola.CarGarage.DTO;
 import java.time.LocalDate;
 
 public class CreateMaintenanceDTO {
+
     private int garageId;
+
     private int carId;
+
     private String serviceType;
+
     private LocalDate scheduledDate;
 
     public int getGarageId() {

@@ -6,6 +6,7 @@ import java.util.List;
 
 @Entity
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 

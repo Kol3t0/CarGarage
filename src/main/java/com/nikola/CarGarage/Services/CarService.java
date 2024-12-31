@@ -41,7 +41,6 @@ public class CarService {
         return carRepository.save(car);
     }
 
-
     public List<ResponseCarDTO> findAllCars() {
         List<Car> cars = carRepository.findAll();
 
@@ -74,11 +73,6 @@ public class CarService {
         }
         carRepository.deleteById(id);
     }
-
-    public List<Car> filterCars(String make, String garageName, int yearFrom, int yearTo) {
-        return carRepository.findByMakeAndGarageAndProductionYearRange(make, garageName, yearFrom, yearTo);
-    }
-
 
     public ResponseCarDTO convertToResponseCarDTO(Car car) {
         List<ResponseGarageDTO> garages = car.getGarage() != null ?

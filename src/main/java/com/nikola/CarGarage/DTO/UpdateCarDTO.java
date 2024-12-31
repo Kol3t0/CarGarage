@@ -1,15 +1,24 @@
 package com.nikola.CarGarage.DTO;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.util.List;
 
 public class UpdateCarDTO {
 
+    @NotEmpty(message = "Make is required")
     private String make;
 
+    @NotEmpty(message = "Model is required")
     private String model;
 
+    @NotNull(message = "Production year is required")
     private int productionYear;
 
+    @NotEmpty(message = "License plate is required")
+    @Size(max = 10, message = "License plate cannot be longer than 10 characters")
     private String licensePlate;
 
     private List<Integer> garageIds;

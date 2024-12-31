@@ -5,6 +5,8 @@ import com.nikola.CarGarage.DTO.ResponseGarageDTO;
 import com.nikola.CarGarage.DTO.UpdateGarageDTO;
 import com.nikola.CarGarage.Classes.Garage;
 import com.nikola.CarGarage.Services.GarageService;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 @RequestMapping("/garages")
 
 public class GarageController {
+
     private final GarageService garageService;
 
     public GarageController(GarageService garageService) {
@@ -25,8 +28,9 @@ public class GarageController {
     }
 
     @PostMapping
-    public Garage addGarage(@RequestBody CreateGarageDTO createGarageDTO) {
-        return garageService.createGarage(createGarageDTO);
+    public ResponseEntity<Garage> createGarage(@Valid @RequestBody CreateGarageDTO createGarageDTO) {
+        Garage createdGarage = garageService.createGarage(createGarageDTO);
+        return ResponseEntity.ok(createdGarage);
     }
 
     @PutMapping("/{id}")

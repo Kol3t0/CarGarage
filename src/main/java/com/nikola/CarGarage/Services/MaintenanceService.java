@@ -28,6 +28,7 @@ public class MaintenanceService {
     }
 
     public Maintenance createMaintenance(CreateMaintenanceDTO createMaintenanceDTO) {
+
         Optional<Car> optionalCar = carRepository.findById(createMaintenanceDTO.getCarId());
         if (optionalCar.isEmpty()) {
             throw new RuntimeException("Car not found");
